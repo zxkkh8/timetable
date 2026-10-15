@@ -1,0 +1,3 @@
+document.querySelectorAll(".lesson-cell").forEach(cell=>{const s=localStorage.getItem(cell.dataset.id);if(s)cell.innerHTML=s;cell.onclick=()=>{if(cell.querySelector("textarea"))return;const t=document.createElement("textarea");t.value=cell.innerHTML.replace(/<br>/g,"
+");cell.innerHTML="";cell.appendChild(t);t.focus();const save=()=>{cell.innerHTML=t.value.replace(/
+/g,"<br>");localStorage.setItem(cell.dataset.id,cell.innerHTML)};t.onblur=save;};});
